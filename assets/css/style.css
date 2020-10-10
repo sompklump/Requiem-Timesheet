@@ -1,0 +1,46 @@
+body{
+  background-color: #282c30;
+}
+
+.user-creds{
+  width: 100%;
+  clear: right;
+  display: table;
+  padding-top: .6%;
+  padding-right: .5%;
+  padding-left: .5%;
+  padding-bottom: .6%;
+}
+.user-creds-avatar {
+  display: table-cell;
+  vertical-align: middle;
+  float: left;
+  border-radius: 50%;
+  padding-top: .1%;
+  width: 2.13%;
+  height: 2.13%;
+}
+
+.user-creds-username {
+  color: white;
+  
+}
+.user-creds-text {
+  display: table-cell;
+  vertical-align: middle;
+  float: left;
+  padding-top: .4%;
+  padding-left: 10px;
+}
+
+.requm-link {
+  text-decoration: none;
+  color: #E6C200;
+}
+.requm-link:hover {
+  color: #ba9722;
+}
+.requm-link-active {
+  text-decoration: underline;
+  color: #E6C200;
+}

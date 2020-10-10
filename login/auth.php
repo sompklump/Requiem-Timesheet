@@ -22,7 +22,7 @@ if(get('action') == 'login') {
     'client_id' => OAUTH2_CLIENT_ID,
     'redirect_uri' => 'http://dinoraids.net/requiem/login/auth.php',
     'response_type' => 'code',
-    'scope' => 'identify guilds'
+    'scope' => 'identify guilds email'
   );
 
   // Redirect the user to Discord's authorization page
@@ -54,9 +54,13 @@ if(session('access_token')) {
   $sql = "SELECT * FROM users WHERE discord_id = '" . mysqli_real_escape_string($conn, $user->id) . "'";
   $result = mysqli_query($conn, $sql);
   if(mysqli_num_rows($result) > 0) {
-    $_SESSION['discord_id'] = $user->id;
+    $_SESSION['discord_userId'] = $user->id;
     $_SESSION['discord_userArr'] =  $user;
-    echo "<script>location.replace('../');</script>"; 
+    echo "User id: " . $user->id."<br>";
+    echo "Name and disc: " . $user->username. "#". $user->discriminator."<br>";
+    echo "<img src='https://cdn.discordapp.com/avatars/{$user->id}/{$user->avatar}.png'></img><br>";
+    print_r($user);
+    echo "<script>location.replace('../');</script>";
   }
   else{
     echo "<script>location.replace('./?msg=". urlencode("Failed, no access!") ."');</script>";
@@ -68,15 +72,13 @@ if(session('access_token')) {
 
 
 if(get('action') == 'logout') {
-  session_destroy();
-  // This must to logout you, but it didn't worked(
-
   $params = array(
-    'access_token' => $logout_token
+    'access_token' => htmlentities(urlencode($_SESSION['access_token']))
   );
-
+  session_destroy();
   // Redirect the user to Discord's revoke page
-  header('Location: https://discordapp.com/api/oauth2/token/revoke' . '?' . http_build_query($params));
+  //header('Location: https://discordapp.com/api/oauth2/token/revoke' . '?' . http_build_query($params));
+  header('Location: ../login');
   die();
 }
 

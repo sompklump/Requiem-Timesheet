@@ -1,5 +1,6 @@
 <?php
 session_start();
+$user_creds = $_SESSION['discord_userArr'];
 
 $timezone = null;
 $weekDays = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
@@ -25,7 +26,7 @@ else{
   }
 }
 
-$times_taken = ["00:30","01:00","01:30","08:30","09:00","14:30","15:00","15:30","17:00","17:30"];
+$times_taken = ["00:00","01:00","02:00","08:00","09:00","14:00","15:00","16:00","17:00","18:00","19:00"];
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,6 +46,44 @@ $times_taken = ["00:30","01:00","01:30","08:30","09:00","14:30","15:00","15:30",
     <link rel="icon" href="assets/imgs/favico.ico">
   </head>
   <body>
+    <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+          <div class="bg-dark p-4">
+            <button id="openSettings_btn" class="btn btn-primary">Settings</button>
+            <br>
+          </div>
+        </div>
+        <nav class="navbar navbar-dark bg-dark">
+          <div class="user-creds">
+            <button style="float:left;margin-right: 20px;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+            </button>
+          <!--<nav class="navbar-expand-sm">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link requm-link requm-link-active" href="./">Nav 1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link requm-link" href="#">Nav 2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link requm-link" href="#">Nav 3</a>
+              </li>
+            </ul>
+          </nav>-->
+            <img class="user-creds-avatar" src="https://cdn.discordapp.com/avatars/<?= $user_creds->id ?>/<?= $user_creds->avatar ?>.png" alt="profile avatar">
+            <span class="user-creds-username user-creds-text"><p><?= $user_creds->username."#".$user_creds->discriminator ?></p></span>
+            <?php
+            if(!isset($_SESSION['discord_userId'])){
+              echo '<a href="login/auth.php" style="float:right" class="user-creds-text requm-link">Login <i class="fas fa-sign-in-alt"></i></a>';
+            }
+            else{
+              echo '<a href="login/auth.php?action=logout" style="float:right" class="user-creds-text requm-link">Logout <i class="fas fa-sign-out-alt"></i></a>';       
+            }
+            ?>
+          </div>
+        </nav>
+    </div>
     <table class="table table-bordered table-striped table-dark">
       <tr>
         <th>Time</th>
@@ -55,7 +94,6 @@ $times_taken = ["00:30","01:00","01:30","08:30","09:00","14:30","15:00","15:30",
         for($i = 0; $i < count($weekDays);$i++){
           if($today_day == $weekDays[$i]){
             $today_day = $i;
-            echo "<script>alert('$today_day');</script>";
           }
         }
           
@@ -72,7 +110,6 @@ $times_taken = ["00:30","01:00","01:30","08:30","09:00","14:30","15:00","15:30",
           $dayAndDate[$day] = $date;
           $i++;
         }
-        print_r($dayAndDate);
         ?>
       </tr>
       <style type="text/css">
