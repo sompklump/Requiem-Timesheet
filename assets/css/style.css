@@ -1,0 +1,185 @@
+/* Stylesheet for Hakuni software. */
+
+/* Imports */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+/* Color */
+
+/* Prerequisites */
+
+html {
+  line-height: 1.15;
+  background: url("/assets/img/bg.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: #fff;
+  display: block;
+}
+
+hr {
+  margin: 0;
+  height: 1px;
+  background-color: #fff;
+  opacity: 0.3;
+  border: 0;
+}
+/* Typography */
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  text-transform: uppercase;
+  font-size: 3.625rem;
+}
+
+h1 .alt-head {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  text-transform: uppercase;
+  font-size: 3.625rem;
+  -webkit-text-stroke-width: 0.09rem;
+  -webkit-text-stroke-color: #e6c200;
+  -webkit-text-fill-color: rgb(0, 0, 0, 0);
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-style: bold;
+  text-transform: uppercase;
+  font-size: 1.8125rem;
+}
+
+h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+
+/* Body Content styling */
+
+.container {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 25rem;
+  border-radius: 0.5rem;
+  background-color: #262626;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+  height:auto;
+}
+
+
+/* > Card Styling*/
+
+.card {
+  margin: 2rem;
+}
+
+.card-logo {
+  position: relative;
+  width: 2.75rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.section {
+  margin: 1.5rem 0;
+}
+.section ul {
+  margin: 0.5rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.section ul li {
+  margin: 0.7rem 0;
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+.section p, .section h3 {
+  margin: 0.5rem 0;
+}
+
+.section ul li span {
+  vertical-align: super;
+  margin-left: 0.25rem;
+}
+
+.section .button {
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.section .button .button__bg {
+  line-height: 1.15;
+  color: #fff;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: #e6c200;
+  animation: pulse 2.4s ease infinite;
+  }
+
+.section .button .button__inner {
+  line-height: 1.15;
+  color: #181818;
+  font-size: 1.5rem;
+  font-weight: 600;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: #e6c200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.section .button .button__inner i {
+  font-weight: bold;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(1, 1);
+		opacity: 1
+	}
+	50% {
+		transform: scale(1, 1);
+		opacity: 1
+	}
+	75% {
+		opacity: 0.3
+	}
+	100% {
+		transform: scale(1.5);
+		opacity: 0
+	}
+}
